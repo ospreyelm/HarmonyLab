@@ -20,6 +20,10 @@ KEYBOARD_CHOICES = (
     (88, _("88"))
 )
 
+TOGGLE_CHOICES = (
+    (0, _("Practice")),
+    (1, _("Teach"))
+)
 
 class User(AbstractBaseUser, PermissionsMixin):
     # FIXME RAW PASSWORD !!!!!!!!
@@ -33,6 +37,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('Last Name'), max_length=32, unique = False, default="", blank=True)
 
     keyboard_size = models.IntegerField(choices=KEYBOARD_CHOICES, default=49)
+
+    toggle_choice = models.IntegerField(choices=TOGGLE_CHOICES, default=0)
 
     _supervisors = ArrayField(base_field=models.IntegerField(), default=list,
                               verbose_name='Supervisors', blank=True)

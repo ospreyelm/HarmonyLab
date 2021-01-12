@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.postgres.forms import JSONField
 from prettyjson import PrettyJSONWidget
 
-from apps.accounts.models import KEYBOARD_CHOICES
+from apps.accounts.models import KEYBOARD_CHOICES, TOGGLE_CHOICES
 from apps.exercises.forms import ExerciseForm, PlaylistForm, CourseForm
 from apps.exercises.models import Exercise
 
@@ -34,6 +34,13 @@ class KeyboardForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super(KeyboardForm, self).__init__(*args, **kwargs)
+
+class ToggleForm(forms.Form):
+    toggle_choice = forms.ChoiceField(widget = forms.CheckboxInput(), choices = TOGGLE_CHOICES, initial = 0)
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(ToggleForm, self).__init__(*args, **kwargs)
 
 
 class DashboardExerciseForm(ExerciseForm):

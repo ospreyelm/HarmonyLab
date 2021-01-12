@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +8,44 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}favicon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}"/>
     <link rel="manifest" href="{{ STATIC_URL }}site.webmanifest">
     {% block css_extra %}{% endblock %}
 </head>
 <body>
-	
-{% block content %}{% endblock %}
 
+<!-- sidebar should be updated to fit the final dashboard sidebar with all its functionality -->
+{% block sidebar %}
+    <div class="sidenav">
+    {% with url_name=request.resolver_match.url_name %}
+        <img src="{{ STATIC_URL }}img/Logo_analytic_piano_2.png" style="object-fit: cover;" width="200" height="135">
+        <!-- <p class="text sidenav-header">AnalyticPiano Dashboard</p> -->
+        <h3 class="text"> Practice </h3>
+        <a {% if url_name == 'performed-playlists' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:performed-playlists' %}"><i class="fas fa-chart-line"></i><span> My Activity</span></a>
+        <a {% if url_name == 'subscriptions' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:subscriptions' %}"><i class="fas fa-graduation-cap"></i><span> Subscriptions</span></a>
+        <a {% if url_name == 'preferences' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:preferences' %}"><i class="fas fa-asterisk"></i><span></span> Preferences</a>
+        <a href=""><i class="fas fa-book"></i><span> Help </span></a>
+        <a href="{% if home_url %}{{ home_url }}{% else %}{% url 'lab:index' %}{% endif %}"><i class="fas fa-music"></i><span> Play View</span></a>
+        <p></p>
+        <h3 class="text" > Create Content </h3>
+        <a {% if url_name == 'courses-list' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:courses-list' %}"><i class="fas fa-pencil-alt"></i><span> Courses</span></a>
+        <a {% if url_name == 'playlists-list' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:playlists-list' %}"><i class="fas fa-atom"></i><span> Units</span></a>
+        <a {% if url_name == 'exercises-list' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:exercises-list' %}"><i class="fas fa-running"></i><span> Exercises</span></a>
+        <a {% if url_name == 'subscribers' %}class="sidenav-active"{% endif %} href="{% url 'dashboard:subscribers' %}"><i class="fas fa-graduation-cap"></i><span> Subscribers</span></a>
+        <a href=""><i class="fas fa-book"></i><span> Help </span></a>
+
+
+    {% endwith %}
+    </div>
+{% endblock %}
+
+<div class="main">
+{% block content %}{% endblock %}
+</div>
 {% block js_require %}
 
 {% autoescape off %}
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="{{ STATIC_URL }}js/lib/require.js"></script>
 <script>requirejs.config({ enforceDefine: true, waitSeconds: 0 });</script>
 <script>requirejs.config({{ requirejs.config_json }});</script>

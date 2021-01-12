@@ -1,46 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+
 .sidenav {
     height: 100%;
-    width: 140px;
+    width: 200px;
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
-    background-color: #111;
+    left: 10;
+    background-color: #357;
     overflow-x: hidden;
+    font-family: sans-serif;
+
     /*padding-top: 20px;*/
 }
 
+a:visited, a {
+    /* text-transform: uppercase; */
+    color: #357;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+
+.text {
+    margin: 5px;
+    color: lightgreen;
+    text-transform: uppercase;
+
+    /* font-family: "Roboto", sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+
+}
+
 .sidenav a {
-    padding: 10px 8px 4px 8px;
+    padding: 10px 8px 4px 12px;
     text-decoration: none;
     font-size: 14px;
-    color: #00a9a5;
+    color: #ffe;
     display: block;
-    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    /* font-family: "Roboto", sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
+
 }
 
 .sidenav-active {
-    background-color: #335271;
     color: #ffffff !important;
+    margin: 0;
+    width: 75%; /* Change this to whatever width you want. */
+    transition: 1.5s;
 }
 
 .sidenav a:hover {
-    background-color: #00a9a5;
+    display: block;
+    height: 50px;
+    width: 100%;
     color: white;
+    line-height: 30px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    border-top: 1px solid rgba(255,255,255,.1);
+    border-left: 5px solid transparent;
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
 }
+
+a.active,a:hover{
+    border-left: 5px solid #b93632;
+    color: #b93632;
+  }
+
+  .sidenav a i{
+    font-size: 10px;
+    margin-right: 16px;
+  }
+
+  
 
 .sidenav-header {
     color: black;
-    background-color: #90c2e7;
+    background-color: #ffe;
     padding: 16px 8px;
     margin: 0px;
     text-align: left;
-    font-size: 17px;
+    font-size: 20px;
+    font-weight: 600;
     font-style: normal;
 }
 
 .main {
-    margin-left: 160px;
+    margin-left: 220px;
     padding: 0px 10px;
     font-size: 14px;
 }
@@ -105,7 +162,7 @@ input[type=checkbox] {
 }
 
 .left, .right {
-    width: 10% !important;
+    width: 5% !important;
 }
 
 .middle {
@@ -156,4 +213,42 @@ form label{
 
 .btn {
     margin-bottom: 1px !important;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
 }
+
+.dashboard-btn .even {
+    background-color: #ffe;
+
+}
+
+tr td {
+    background-color: #ffe;
+    padding: 6px !important;
+    margin: 4px !important;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.paleblue {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.orderable {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+th {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+
+}
+
+thead > tr > th {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+

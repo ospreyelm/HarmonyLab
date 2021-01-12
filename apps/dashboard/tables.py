@@ -296,5 +296,5 @@ class CoursesListTable(tables.Table):
     class Meta:
         attrs = {'class': 'paleblue'}
         table_pagination = False
-        order_by = ('-id')
+        order_by = ('-id'   )
         template_name = "django_tables2/bootstrap4.html"
